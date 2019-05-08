@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_ideas.*
 
@@ -25,6 +24,10 @@ class IdeasActivity : AppCompatActivity() {
         setContentView(R.layout.activity_ideas)
 
         val themeText = intent.getStringExtra(KEY_THEME)
+        if (themeText == null) {
+            tv_theme.setText(R.string.missing_theme)
+            return
+        }
 
         tv_theme.text = themeText
 
