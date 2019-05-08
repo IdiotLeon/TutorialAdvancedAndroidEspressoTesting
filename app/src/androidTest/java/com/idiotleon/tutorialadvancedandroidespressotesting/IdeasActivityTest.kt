@@ -1,5 +1,6 @@
 package com.idiotleon.tutorialadvancedandroidespressotesting
 
+import android.content.Intent
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.withId
@@ -26,5 +27,15 @@ class IdeasActivityTest {
         activityRule.launchActivity(null)
         onView(withId(R.id.tv_theme))
             .check(matches(withText(R.string.missing_theme)))
+    }
+
+    @Test
+    fun punny() {
+        val intent = Intent()
+        intent.putExtra(IdeasActivity.KEY_THEME, "Punny")
+        activityRule.launchActivity(intent)
+
+        onView(withId(R.id.tv_theme))
+            .check(matches(withText("Punny")))
     }
 }
